@@ -40,7 +40,7 @@ function App() {
           </h1>
           <ol className='flex flex-col gap-4 text-sm'>
             {howToLoginSteps.map((step, i) => (
-              <li className='flex gap-3 items-center'>
+              <li key={i} className='flex gap-3 items-center'>
                 <span className='font-medium text-xs rounded-full bg-green-100 text-green-500 h-6 w-6 flex items-center justify-center'>
                   {i + 1}
                 </span>
