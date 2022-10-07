@@ -62,7 +62,7 @@ export function ChatBox() {
 
 function ChatBubble({ children }) {
   return (
-    <div className='rounded-bl-none rounded-2xl px-6 py-4 text-[#010101] bg-white'>
+    <div className='max-w-sm rounded-bl-none rounded-2xl px-6 py-4 text-[#010101] bg-white'>
       {children}
     </div>
   )
