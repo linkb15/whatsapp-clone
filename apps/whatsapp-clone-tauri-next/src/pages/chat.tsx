@@ -2,6 +2,7 @@ import { EmptyChatBox } from '../components/EmptyChatBox'
 import { ChatTab } from '../components/chat/Tab'
 import { ChatSearch } from '../components/chat/Search'
 import { ChatMenu } from '../components/chat/Menu'
+import { ChatFAB } from '../components/chat/FAB'
 import { Header } from 'components/Header'
 import { ChatBox } from 'components/ChatBox'
 import { useChatSelected, useHydration } from 'lib/useChatSelected'
@@ -12,7 +13,7 @@ const ChatPage = () => {
   const hasHydrated = useHydration()
   return (
     <div className='container min-h-screen mx-auto max-w-6xl flex'>
-      <div className='w-2/5 py-5 px-3 bg-[#F5FAFC] pr-[9px] pl-[15px] flex flex-col gap-6'>
+      <div className='relative w-2/5 py-5 px-3 bg-[#F5FAFC] pr-[9px] pl-[15px] flex flex-col gap-6'>
         <div className='px-3'>
           <ChatMenu />
         </div>
@@ -20,6 +21,7 @@ const ChatPage = () => {
           <ChatSearch />
         </div>
         <ChatTab />
+        <ChatFAB />
       </div>
       <div className='w-3/5 bg-[#FAFAFA]'>
         {!hasHydrated ? (
