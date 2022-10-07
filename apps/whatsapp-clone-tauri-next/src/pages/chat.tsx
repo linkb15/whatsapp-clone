@@ -3,8 +3,10 @@ import { ChatTab } from '../components/chat/Tab'
 import { ChatSearch } from '../components/chat/Search'
 import { ChatMenu } from '../components/chat/Menu'
 import { Header } from 'components/Header'
+import { useChatSelected } from 'lib/useChatSelected'
 
 const ChatPage = () => {
+  const chatSelected = useChatSelected((s) => s.selectedChatId)
   return (
     <div className='container min-h-screen mx-auto max-w-6xl flex'>
       <div className='w-2/5 py-5 px-3 bg-[#F5FAFC] pr-[9px] pl-[15px] flex flex-col gap-6'>
@@ -17,8 +19,7 @@ const ChatPage = () => {
         <ChatTab />
       </div>
       <div className='w-3/5 bg-[#FAFAFA]'>
-        {/* <Header /> */}
-        <EmptyChatBox />
+        {chatSelected ? <Header /> : <EmptyChatBox />}
       </div>
     </div>
   )

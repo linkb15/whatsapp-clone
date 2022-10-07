@@ -117,6 +117,7 @@ export function ChatTab() {
   })
 
   const selectChat = useChatSelected((s) => s.setSelectedChatId)
+  const selectedChat = useChatSelected((s) => s.selectedChatId)
   return (
     <div className='w-full max-w-md flex flex-col gap-6'>
       <Tab.Group>
@@ -140,11 +141,15 @@ export function ChatTab() {
           ))}
         </Tab.List>
         <Tab.Panels>
-          {Object.values(categories).map((posts, idx) => (
+          {Object.values(categories).map((chats, idx) => (
             <Tab.Panel key={idx}>
-              {posts.map((chat) => (
+              {chats.map((chat) => (
                 <div
-                  className='cursor-pointer transition-colors hover:bg-[#D1E4E8]/50 rounded-lg flex gap-3 px-3 items-center py-2 text-[#09132C]'
+                  className={classNames(
+                    selectedChat === chat.id &&
+                      'bg-[#D1E4E8] hover:bg-[#D1E4E8]',
+                    'cursor-pointer transition-colors hover:bg-[#D1E4E8]/50 rounded-lg flex gap-3 px-3 items-center py-2 text-[#09132C]'
+                  )}
                   key={chat.id}
                   onClick={() => selectChat(chat.id)}>
                   <img
