@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Tab } from '@headlessui/react'
-import { useChatSelected } from 'lib/useChatSelected'
+import { useChatSelected, useHydration } from 'lib/useChatSelected'
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
@@ -118,6 +118,9 @@ export function ChatTab() {
 
   const selectChat = useChatSelected((s) => s.setSelectedChatId)
   const selectedChat = useChatSelected((s) => s.selectedChatId)
+
+  const hasHydrated = useHydration()
+
   return (
     <div className='w-full max-w-md flex flex-col gap-6'>
       <Tab.Group>
@@ -146,7 +149,8 @@ export function ChatTab() {
               {chats.map((chat) => (
                 <div
                   className={classNames(
-                    selectedChat === chat.id &&
+                    hasHydrated &&
+                      selectedChat === chat.id &&
                       'bg-[#D1E4E8] hover:bg-[#D1E4E8]',
                     'cursor-pointer transition-colors hover:bg-[#D1E4E8]/50 rounded-lg flex gap-3 px-3 items-center py-2 text-[#09132C]'
                   )}
