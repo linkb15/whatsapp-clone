@@ -1,6 +1,10 @@
-import React from 'react'
+import { ButtonHTMLAttributes, ReactNode } from 'react'
 
-export function Button(props) {
-  return <button onClick={() => props.onClick()}>{props.children}</button>
+export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+  children: ReactNode
+}
+
+export function Button({ children, ...props }: ButtonProps) {
+  return <button {...props}>{children}</button>
 }
 export default Button

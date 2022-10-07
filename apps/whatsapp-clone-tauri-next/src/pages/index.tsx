@@ -1,77 +1,64 @@
-import { useState } from 'react'
-import { invoke } from '@tauri-apps/api/tauri'
-import Image from 'next/image'
-import reactLogo from '../assets/react.svg'
-import tauriLogo from '../assets/tauri.svg'
-import nextLogo from '../assets/next.svg'
-import { Button } from 'ui'
+import { QRCodeCanvas } from 'qrcode.react'
+import { ChevronDown } from 'react-iconly'
+
+const howToLoginSteps = [
+  'Open WhatsApp on your phone',
+  <p className='flex gap-1.5'>
+    Tap Menu{' '}
+    <span className='bg-green-50'>
+      <ChevronDown set='light' size={'medium'} />
+    </span>{' '}
+    or Settings and select
+    <span className='font-medium'>Linked Devices</span>
+  </p>,
+  'Point your phone to this screen to capture',
+]
 
 function App() {
-  const [greetMsg, setGreetMsg] = useState('')
-  const [name, setName] = useState('')
-
-  async function greet() {
-    // Learn more about Tauri commands at https://tauri.app/v1/guides/features/command
-    setGreetMsg(await invoke('greet', { name }))
-  }
-
   return (
-    <div className='container'>
-      <h1>Welcome to Tauri!</h1>
-
-      <div className='row'>
-        <span className='logos'>
-          <Button>Test</Button>
-          <a href='https://nextjs.org' target='_blank'>
-            <Image
-              width={144}
-              height={144}
-              src={nextLogo}
-              className='logo next'
-              alt='Next logo'
-            />
-          </a>
-        </span>
-        <span className='logos'>
-          <a href='https://tauri.app' target='_blank'>
-            <Image
-              width={144}
-              height={144}
-              src={tauriLogo}
-              className='logo tauri'
-              alt='Tauri logo'
-            />
-          </a>
-        </span>
-        <span className='logos'>
-          <a href='https://reactjs.org' target='_blank'>
-            <Image
-              width={144}
-              height={144}
-              src={reactLogo}
-              className='logo react'
-              alt='React logo'
-            />
-          </a>
-        </span>
-      </div>
-
-      <p>Click on the Tauri, Next, and React logos to learn more.</p>
-
-      <div className='row'>
-        <div>
-          <input
-            id='greet-input'
-            onChange={(e) => setName(e.currentTarget.value)}
-            placeholder='Enter a name...'
-          />
-          <button type='button' onClick={() => greet()}>
-            Greet
-          </button>
+    <div className='bg-gray-100 min-h-screen text-[#09132C]'>
+      <div className='container mx-auto max-w-6xl flex flex-col items-center justify-center py-24 gap-10'>
+        <QRCodeCanvas
+          value={'https://picturesofpeoplescanningqrcodes.tumblr.com/'}
+          size={266}
+          bgColor={'transparent'}
+          fgColor={'#09132C'}
+          level={'Q'}
+          includeMargin={false}
+          imageSettings={{
+            src: './whatsapp.svg',
+            x: undefined,
+            y: undefined,
+            height: 64,
+            width: 64,
+            excavate: false,
+          }}
+        />
+        <div className='flex flex-col gap-6'>
+          <h1 className='font-medium text-lg text-center'>
+            Login in to WhatsApp by QR Code
+          </h1>
+          <ol className='flex flex-col gap-4 text-sm'>
+            {howToLoginSteps.map((step, i) => (
+              <li className='flex gap-3 items-center'>
+                <span className='font-medium text-xs rounded-full bg-green-100 text-green-500 h-6 w-6 flex items-center justify-center'>
+                  {i + 1}
+                </span>
+                {step}
+              </li>
+            ))}
+          </ol>
         </div>
-      </div>
 
-      <p>{greetMsg}</p>
+        <label htmlFor='rememberMe' className='flex gap-3 items-center text-lg'>
+          <input
+            id='rememberMe'
+            type='checkbox'
+            className='rounded text-green-500 focus:ring-green-500'
+          />
+          Keep me signed in
+        </label>
+      </div>
     </div>
   )
 }

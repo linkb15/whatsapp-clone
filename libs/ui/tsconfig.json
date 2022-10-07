@@ -5,7 +5,9 @@
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "module": "commonjs",
-    "outDir": "./dist"
+    "outDir": "./dist",
+    "strict": true,
+    "target": "esnext"
   },
   "include": ["."],
   "exclude": ["dist", "node_modules", "**/*.spec.ts"]
