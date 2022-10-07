@@ -51,7 +51,6 @@ export function Audio() {
     wavesurfer?.current?.on('ready', function (e) {
       if (wavesurfer.current) {
         wavesurfer?.current?.setVolume(1)
-        console.log(wavesurfer.current.getDuration())
         setDuration(wavesurfer?.current?.getDuration() || 0)
       }
     })
