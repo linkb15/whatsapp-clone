@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Tab } from '@headlessui/react'
+import { useChatSelected } from 'lib/useChatSelected'
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
@@ -52,7 +53,7 @@ export function ChatTab() {
     Friends: [
       {
         id: '1',
-        name: 'Cody Fisher Friend',
+        name: 'Cody Fisher',
         lastMessage: 'Haha oh man',
         isPinned: true,
         lastMessageAt: '05:14 pm',
@@ -84,7 +85,7 @@ export function ChatTab() {
     Groups: [
       {
         id: '1',
-        name: 'Cody Fisher Family',
+        name: 'Cody Fisher',
         lastMessage: 'Haha oh man',
         isPinned: true,
         lastMessageAt: '05:14 pm',
@@ -115,6 +116,7 @@ export function ChatTab() {
     ],
   })
 
+  const selectChat = useChatSelected((s) => s.setSelectedChatId)
   return (
     <div className='w-full max-w-md flex flex-col gap-6'>
       <Tab.Group>
@@ -137,13 +139,14 @@ export function ChatTab() {
             </Tab>
           ))}
         </Tab.List>
-        <Tab.Panels className=''>
+        <Tab.Panels>
           {Object.values(categories).map((posts, idx) => (
             <Tab.Panel key={idx}>
               {posts.map((chat) => (
                 <div
-                  className='flex gap-3 px-3 items-center py-2 text-[#09132C]'
-                  key={chat.id}>
+                  className='cursor-pointer transition-colors hover:bg-[#D1E4E8]/50 rounded-lg flex gap-3 px-3 items-center py-2 text-[#09132C]'
+                  key={chat.id}
+                  onClick={() => selectChat(chat.id)}>
                   <img
                     src={chat.avatarImageUrl}
                     width={60}
