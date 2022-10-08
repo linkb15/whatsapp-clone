@@ -6,6 +6,7 @@ import { ChatFAB } from '../components/chat/FAB'
 import { Header } from 'components/Header'
 import { ChatBox } from 'components/ChatBox'
 import { useChatSelected, useHydration } from 'lib/useChatSelected'
+import { ChatInput } from 'components/ChatInput'
 
 const ChatPage = () => {
   const chatSelected = useChatSelected((s) => s.selectedChatId)
@@ -30,6 +31,7 @@ const ChatPage = () => {
           <>
             <Header />
             <ChatBox />
+            <ChatInput />
           </>
         ) : (
           <EmptyChatBox />
