@@ -12,7 +12,7 @@ export function Header() {
       'https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y',
   }
   return (
-    <div className='sticky top-0 z-50 bg-[#F7F7FC] px-6 py-4 flex items-center gap-4 justify-between w-full'>
+    <div className='sticky rounded-3xl rounded-l-none top-0 z-50 bg-[#F7F7FC] px-6 py-4 flex items-center gap-4 justify-between w-full'>
       <div className='flex gap-4 items-center'>
         <img
           src={chat.avatarImageUrl}

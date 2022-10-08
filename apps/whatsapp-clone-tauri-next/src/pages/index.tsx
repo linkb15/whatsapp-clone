@@ -1,6 +1,14 @@
 import { QRCodeCanvas } from 'qrcode.react'
 import { ChevronDown } from 'react-iconly'
+import Link from 'next/link'
+import dynamic from 'next/dynamic'
 
+const TrafficLight = dynamic(
+  () => import('components/TrafficLight').then((mod) => mod.TrafficLight),
+  {
+    ssr: false,
+  }
+)
 const howToLoginSteps = [
   'Open WhatsApp on your phone',
   <p className='flex gap-1.5'>
@@ -16,24 +24,31 @@ const howToLoginSteps = [
 
 function App() {
   return (
-    <div className='bg-gray-100 min-h-screen text-[#09132C]'>
-      <div className='container mx-auto max-w-6xl flex flex-col items-center justify-center py-24 gap-10'>
-        <QRCodeCanvas
-          value={'https://picturesofpeoplescanningqrcodes.tumblr.com/'}
-          size={266}
-          bgColor={'transparent'}
-          fgColor={'#09132C'}
-          level={'Q'}
-          includeMargin={false}
-          imageSettings={{
-            src: './whatsapp.svg',
-            x: undefined,
-            y: undefined,
-            height: 64,
-            width: 64,
-            excavate: false,
-          }}
-        />
+    <div className='rounded-3xl relative bg-gray-100 min-h-screen flex items-center justify-center text-[#09132C]'>
+      <div className='absolute top-8 left-5'>
+        <TrafficLight />
+      </div>
+      <div className='container mx-auto max-w-6xl flex flex-col items-center justify-center gap-10'>
+        <Link href='/chat'>
+          <a>
+            <QRCodeCanvas
+              value={'https://picturesofpeoplescanningqrcodes.tumblr.com/'}
+              size={266}
+              bgColor={'transparent'}
+              fgColor={'#09132C'}
+              level={'Q'}
+              includeMargin={false}
+              imageSettings={{
+                src: './whatsapp.svg',
+                x: undefined,
+                y: undefined,
+                height: 64,
+                width: 64,
+                excavate: false,
+              }}
+            />
+          </a>
+        </Link>
         <div className='flex flex-col gap-6'>
           <h1 className='font-medium text-lg text-center'>
             Login in to WhatsApp by QR Code

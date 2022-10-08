@@ -119,7 +119,7 @@ const chatBoxesData = [
 type ChatBoxesData = typeof chatBoxesData[number]
 
 export function ChatBox() {
-  const imageSequence = []
+  let imageSequence = []
 
   const child = (
     chatData: ChatBoxesData,

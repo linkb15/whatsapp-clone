@@ -4,8 +4,8 @@ import WaveSurfer from 'wavesurfer.js'
 
 let url = 'https://www.mfiles.co.uk/mp3-downloads/gs-cd-track2.mp3'
 
-export function Audio() {
-  const waveformRef = useRef<HTMLElement>(null)
+export function Audio({ data }) {
+  const waveformRef = useRef<HTMLDivElement>(null)
   const wavesurfer = useRef<WaveSurfer>(null)
 
   const [play, setPlay] = useState(false)

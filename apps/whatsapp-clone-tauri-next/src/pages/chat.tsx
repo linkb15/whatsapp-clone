@@ -13,8 +13,8 @@ const ChatPage = () => {
 
   const hasHydrated = useHydration()
   return (
-    <div className='container h-screen mx-auto max-w-6xl flex'>
-      <div className='relative w-2/5 py-5 px-3 bg-[#F5FAFC] pr-[9px] pl-[15px] flex flex-col gap-6'>
+    <div className='container rounded-3xl h-screen mx-auto max-w-6xl flex'>
+      <div className='rounded-3xl rounded-r-none relative w-2/5 py-5 px-3 bg-[#F5FAFC] pr-[9px] pl-[15px] flex flex-col gap-6'>
         <div className='px-3'>
           <ChatMenu />
         </div>
@@ -24,7 +24,7 @@ const ChatPage = () => {
         <ChatTab />
         <ChatFAB />
       </div>
-      <div className='w-3/5 h-screen overflow-auto bg-[#FAFAFA]'>
+      <div className='rounded-3xl rounded-l-none w-3/5 h-screen overflow-auto bg-[#FAFAFA]'>
         {!hasHydrated ? (
           'Loading ...'
         ) : chatSelected ? (

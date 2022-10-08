@@ -23,13 +23,13 @@
       },
       "externalBin": [],
       "icon": [
-        "icons/32x32.png",
+        "icons/Assets.xcassets/AppIcon.appiconset/32.png",
         "icons/128x128.png",
         "icons/128x128@2x.png",
-        "icons/icon.icns",
+        "icons/Frame.icns",
         "icons/icon.ico"
       ],
-      "identifier": "com.tauri.dev",
+      "identifier": "com.whatsapp-clone.dev",
       "longDescription": "",
       "macOS": {
         "entitlements": null,
@@ -56,11 +56,14 @@
     "windows": [
       {
         "fullscreen": false,
-        "height": 600,
-        "resizable": true,
+        "height": 708,
+        "resizable": false,
         "title": "whatsapp-clone-tauri",
-        "width": 800
+        "width": 1120,
+        "transparent": true,
+        "decorations": false
       }
-    ]
+    ],
+    "macOSPrivateApi": true
   }
 }
