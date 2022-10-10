@@ -4,13 +4,19 @@
 
 Make sure you have cargo installed first <https://www.rust-lang.org/learn/get-started>
 
+Install Dependencies
+
+```bash
+pnpm i
+```
+
 Run in Localhost
 
 ```bash
 pnpm wa dev
 ```
 
-Run in App
+Or run in App
 
 ```bash
 pnpm wa tauri dev
